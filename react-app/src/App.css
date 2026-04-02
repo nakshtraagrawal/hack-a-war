@@ -1784,3 +1784,189 @@ footer {
 .cval-cost { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--text); }
 .rating-dots { display: flex; gap: 4px; }
 .rdot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* ═══════════════════════════════════════════════════════
+   ANIMATED SHADER HERO — LANDING PAGE
+   ═══════════════════════════════════════════════════════ */
+
+.shader-hero-root {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.shader-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  touch-action: none;
+  background: var(--bg);
+}
+
+/* Grid overlay */
+.shader-hero-root::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,240,180,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,240,180,.03) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: radial-gradient(ellipse 80% 75% at 50% 50%, black 10%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.shader-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  padding: 40px;
+}
+
+/* Trust badge */
+.shader-trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 18px;
+  background: rgba(0,240,180,.08);
+  border: 1px solid rgba(0,240,180,.2);
+  border-radius: 100px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .68rem;
+  color: var(--cyan);
+  letter-spacing: .08em;
+  margin-bottom: 44px;
+  animation: shaderFadeUp .8s ease both;
+}
+
+.shader-trust-icons {
+  display: flex;
+  gap: 2px;
+}
+
+/* Content */
+.shader-content {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.shader-headlines {
+  margin-bottom: 28px;
+}
+
+.shader-h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4.5rem, 11vw, 9.5rem);
+  letter-spacing: .03em;
+  line-height: .92;
+  opacity: 0;
+  animation: shaderFadeUp .8s ease forwards;
+}
+
+.shader-h1--line1 {
+  background: linear-gradient(115deg, var(--cyan) 0%, var(--blue) 55%, var(--magenta) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 60px rgba(0,240,180,.2));
+  animation-delay: .15s;
+}
+
+.shader-h1--line2 {
+  background: linear-gradient(115deg, var(--blue) 0%, var(--magenta) 55%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 60px rgba(61,127,255,.2));
+  animation-delay: .3s;
+}
+
+.shader-subtitle {
+  font-size: clamp(.95rem, 1.4vw, 1.15rem);
+  color: var(--muted2);
+  max-width: 580px;
+  margin: 0 auto 44px;
+  line-height: 1.8;
+  font-weight: 300;
+  opacity: 0;
+  animation: shaderFadeUp .8s ease .45s forwards;
+}
+
+/* Buttons */
+.shader-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: shaderFadeUp .8s ease .6s forwards;
+}
+
+.shader-btn {
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: .1em;
+  cursor: none;
+  transition: all .28s;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.shader-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, rgba(255,255,255,.18), transparent);
+  transform: translateX(-110%);
+  transition: transform .38s;
+}
+
+.shader-btn:hover::before {
+  transform: translateX(110%);
+}
+
+.shader-btn--primary {
+  background: linear-gradient(110deg, var(--cyan), var(--blue));
+  color: #000;
+  font-weight: 700;
+}
+
+.shader-btn--primary:hover {
+  box-shadow: 0 0 44px rgba(0,240,180,.3);
+  transform: translateY(-2px);
+}
+
+.shader-btn--secondary {
+  background: rgba(61,127,255,.1);
+  border: 1px solid rgba(61,127,255,.3) !important;
+  color: #80aaff;
+}
+
+.shader-btn--secondary:hover {
+  background: rgba(61,127,255,.2);
+  border-color: rgba(61,127,255,.55) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 0 28px rgba(61,127,255,.2);
+}
+
+/* Keyframe */
+@keyframes shaderFadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

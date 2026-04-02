@@ -4,6 +4,7 @@ export default function Navbar({ onToggleRaw, onExportJSON }) {
   const location = useLocation();
   const isResult = location.pathname === '/result';
   const isAnalyse = location.pathname === '/analyse';
+  const isGenerate = location.pathname === '/generate';
 
   if (isResult) {
     return (
@@ -17,7 +18,7 @@ export default function Navbar({ onToggleRaw, onExportJSON }) {
         <div className="nav-right">
           <button className="nbtn" onClick={onToggleRaw}>⟨/⟩ Raw Mermaid</button>
           <button className="nbtn" onClick={onExportJSON}>↓ Export JSON</button>
-          <Link to="/" className="nbtn primary">← Back to Generator</Link>
+          <Link to="/generate" className="nbtn primary">← Back to Generator</Link>
         </div>
       </nav>
     );
@@ -28,7 +29,7 @@ export default function Navbar({ onToggleRaw, onExportJSON }) {
       <nav>
         <Link to="/" className="logo" style={{ textDecoration: 'none' }}>ArchitectAI</Link>
         <div className="nav-links">
-          <Link to="/">Generator</Link>
+          <Link to="/generate">Generator</Link>
           <a href="#analyser" className="nav-active">Analyser</a>
           <Link to="/result">Full Diagram View</Link>
         </div>
@@ -36,9 +37,10 @@ export default function Navbar({ onToggleRaw, onExportJSON }) {
     );
   }
 
+  // Generator page (and any other with navbar)
   return (
     <nav>
-      <div className="logo">ArchitectAI</div>
+      <Link to="/" className="logo" style={{ textDecoration: 'none' }}>ArchitectAI</Link>
       <div className="nav-links">
         <a href="#generator">Generator</a>
         <Link to="/analyse">Analyser</Link>
